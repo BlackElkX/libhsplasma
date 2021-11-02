@@ -21,7 +21,7 @@ bin/prp-fuse
 bin/prpgrep
 bin/prpmod
 Misc/TypeMap
-
+/build
 /log
 /dat
 /docs/api
