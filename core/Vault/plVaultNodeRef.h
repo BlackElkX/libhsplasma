@@ -17,9 +17,9 @@
 #ifndef _PLVAULTNODEREF_H
 #define _PLVAULTNODEREF_H
 
-#include "../Sys/plUnifiedTime.h"
+#include "Sys/plUnifiedTime.h"
 
-class PLASMA_DLL plVaultNodeRef
+class HSPLASMA_EXPORT plVaultNodeRef
 {
 protected:
     unsigned int fSaver, fParent, fChild;

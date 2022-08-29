@@ -21,7 +21,7 @@
 #include "PRP/Animation/plController.h"
 #include "PRP/Animation/plAnimTimeConvert.h"
 
-class PLASMA_DLL plLayerAnimationBase : public plLayerInterface
+class HSPLASMA_EXPORT plLayerAnimationBase : public plLayerInterface
 {
     CREATABLE(plLayerAnimationBase, kLayerAnimationBase, plLayerInterface)
 
@@ -49,7 +49,7 @@ protected:
 
 public:
     plController* getPreshadeCtl() const { return fPreshadeColorCtl; }
-    plController* getRuntimeCtl() const { return fSpecularColorCtl; }
+    plController* getRuntimeCtl() const { return fRuntimeColorCtl; }
     plController* getAmbientCtl() const { return fAmbientColorCtl; }
     plController* getSpecularCtl() const { return fSpecularColorCtl; }
     plController* getOpacityCtl() const { return fOpacityCtl; }
@@ -64,7 +64,7 @@ public:
 };
 
 
-class PLASMA_DLL plLayerAnimation : public plLayerAnimationBase
+class HSPLASMA_EXPORT plLayerAnimation : public plLayerAnimationBase
 {
     CREATABLE(plLayerAnimation, kLayerAnimation, plLayerAnimationBase)
 
@@ -85,7 +85,7 @@ public:
 };
 
 
-class PLASMA_DLL plLayerLinkAnimation : public plLayerAnimation
+class HSPLASMA_EXPORT plLayerLinkAnimation : public plLayerAnimation
 {
     CREATABLE(plLayerLinkAnimation, kLayerLinkAnimation, plLayerAnimation)
 
@@ -112,7 +112,7 @@ public:
 };
 
 
-class PLASMA_DLL plLayerSDLAnimation : public plLayerAnimation
+class HSPLASMA_EXPORT plLayerSDLAnimation : public plLayerAnimation
 {
     CREATABLE(plLayerSDLAnimation, kLayerSDLAnimation, plLayerAnimationBase)
 

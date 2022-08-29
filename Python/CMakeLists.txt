@@ -1,9 +1,9 @@
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 3.2 REQUIRED)
 # Use only the major.minor version -- no patch, no +, etc
-STRING(REGEX REPLACE "([0-9]\\.[0-9])[0-9.+]*" "\\1" PYTHONLIBS_VERSION_STRING_FILTERED "${PYTHONLIBS_VERSION_STRING}")
+STRING(REGEX REPLACE "([0-9]\\.[0-9]+)[0-9.+]*" "\\1" PYTHONLIBS_VERSION_STRING_FILTERED "${PYTHONLIBS_VERSION_STRING}")
 find_package(PythonInterp "${PYTHONLIBS_VERSION_STRING_FILTERED}" REQUIRED)
 # make sure the versions match
-STRING(REGEX REPLACE "([0-9]\\.[0-9])[0-9.+]*" "\\1" PYTHON_VERSION_STRING_FILTERED "${PYTHON_VERSION_STRING}")
+STRING(REGEX REPLACE "([0-9]\\.[0-9]+)[0-9.+]*" "\\1" PYTHON_VERSION_STRING_FILTERED "${PYTHON_VERSION_STRING}")
 if (NOT "${PYTHONLIBS_VERSION_STRING_FILTERED}" STREQUAL "${PYTHON_VERSION_STRING_FILTERED}")
     message(FATAL_ERROR "Versions of Python libraries (${PYTHONLIBS_VERSION_STRING_FILTERED}) and Python interpreter (${PYTHON_VERSION_STRING_FILTERED}) do not match. Please configure the paths manually.")
 endif()
@@ -23,7 +23,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 include_directories(${PYTHON_INCLUDE_DIRS})
-include_directories(./)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(DEBUG_SOURCES
     Debug/pyDebug.cpp
@@ -189,6 +189,7 @@ set(PRP_AVATAR_HEADERS
     PRP/Avatar/pyAGMasterMod.h
     PRP/Avatar/pyAGModifier.h
     PRP/Avatar/pyATCAnim.h
+    PRP/Avatar/pyClothingItem.h
     PRP/Avatar/pyLadderModifier.h
     PRP/Avatar/pyMultistageBehMod.h
     PRP/Avatar/pySeekPointMod.h

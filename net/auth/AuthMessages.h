@@ -49,6 +49,7 @@ enum /* Client -> Server */
     kCli2Auth_ScoreGetRanks, kCli2Auth_AcctExistsRequest,
     kCli2Auth_LastMessage,
     kCli2Auth_AgeRequestEx = 0x1000,
+    kCli2Auth_ScoreGetHighScores,
     kCli2Auth_LastExMessage,
 };
 
@@ -78,10 +79,12 @@ enum /* Server -> Client */
     kAuth2Cli_ScoreGetRanksReply, kAuth2Cli_AcctExistsReply,
     kAuth2Cli_LastMessage,
     kAuth2Cli_AgeReplyEx = 0x1000,
+    kAuth2Cli_ScoreGetHighScoresReply,
+    kAuth2Cli_ServerCaps,
     kAuth2Cli_LastExMessage,
 };
 
-PLASMANET_DLL const pnNetMsg* GET_Cli2Auth(uint32_t msgId);
-PLASMANET_DLL const pnNetMsg* GET_Auth2Cli(uint32_t msgId);
+HSPLASMANET_EXPORT const pnNetMsg* GET_Cli2Auth(uint32_t msgId);
+HSPLASMANET_EXPORT const pnNetMsg* GET_Auth2Cli(uint32_t msgId);
 
 #endif

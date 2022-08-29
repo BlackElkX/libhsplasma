@@ -23,7 +23,7 @@
 #include "plBitmap.h"
 #include "hsGMatState.h"
 
-class PLASMA_DLL plLayerInterface : public plSynchedObject
+class HSPLASMA_EXPORT plLayerInterface : public plSynchedObject
 {
     CREATABLE(plLayerInterface, kLayerInterface, plSynchedObject)
 
@@ -114,6 +114,8 @@ public:
 
     const hsGMatState& getState() const { return fState; }
     hsGMatState& getState() { return fState; }
+
+    plKey getBottomOfStack() const;
 };
 
 #endif

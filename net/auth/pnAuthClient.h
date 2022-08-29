@@ -25,13 +25,13 @@
 #include "crypt/pnRC4.h"
 #include "pnSocketInterface.h"
 
-struct PLASMANET_DLL pnAuthFileItem
+struct HSPLASMANET_EXPORT pnAuthFileItem
 {
     ST::string fFilename;
     uint32_t fFileSize;
 };
 
-struct PLASMANET_DLL pnNetGameScore
+struct HSPLASMANET_EXPORT pnNetGameScore
 {
     uint32_t fScoreId, fOwnerId;
     uint32_t fCreatedTime, fGameType;
@@ -39,14 +39,14 @@ struct PLASMANET_DLL pnNetGameScore
     ST::string fGameName;
 };
 
-struct PLASMANET_DLL pnNetGameRank
+struct HSPLASMANET_EXPORT pnNetGameRank
 {
     uint32_t fRank;
     int32_t fScore;
     ST::string fName;
 };
 
-class PLASMANET_DLL pnAuthClient : public pnClient
+class HSPLASMANET_EXPORT pnAuthClient : public pnClient
 {
 public:
     pnAuthClient(plResManager* mgr, bool deleteMsgs = true, bool threaded = true)
@@ -132,6 +132,7 @@ public:
     uint32_t sendScoreGetRanks(uint32_t ownerId, uint32_t group, uint32_t parent,
                 const ST::string& gameName, uint32_t timePeriod, uint32_t numResults,
                 uint32_t pageNumber, uint32_t sortDesc);
+    uint32_t sendScoreGetHighScores(uint32_t ageId, uint32_t maxScores, const ST::string &gameName);
     void propagateMessage(plCreatable* msg);
 
     /* Incoming Protocol - To be implemented by subclasses */
@@ -205,6 +206,8 @@ public:
     virtual void onScoreGetRanksReply(uint32_t transId, ENetError result,
                     size_t count, const pnNetGameRank* ranks);
     virtual void onPropagateMessage(plCreatable* msg);
+    virtual void onScoreGetHighScoresReply(uint32_t transId, ENetError result, uint32_t score_count, const pnNetGameScore* scores);
+    virtual void onServerCaps(const hsBitVector& caps);
 
 protected:
     pnRC4Socket* fSock;

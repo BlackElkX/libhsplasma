@@ -52,7 +52,7 @@ struct plPageStream
  * handle PRC data and store Age or PRP information.  Most of the
  * top-level file-based operations you'll do will start from here.
  */
-class PLASMA_DLL plResManager
+class HSPLASMA_EXPORT plResManager
 {
 private:
     std::mutex fResMgrMutex;
@@ -376,6 +376,13 @@ public:
      *        any invalid keys while building the type list.
      */
     std::vector<plKey> getKeys(short type, bool checkKeys = false);
+
+    /**
+     * Sorts keys in the keyring by name. This is probably a good idea
+     * to do if you're changing a PRP for MOUL or Myst V that has objects
+     * (such as journal images) that are looked up by name.
+     */
+    void optimizeKeys(const plLocation& loc);
 
     /**
      * Manually register a plKey with the ResManager.
